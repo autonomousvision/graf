@@ -1,0 +1,15 @@
+expname: cub_64
+data:
+  imsize: 64
+  datadir: data/cub
+  type: cub
+  radius: 9,11
+  near: 7.5
+  far: 12.5
+  fov: 30
+  vmin: 0.24999999999999994    # 60 deg
+  vmax: 0.5435778713738291     # 95 deg
+discriminator:
+  hflip: True
+nerf:
+  use_viewdirs: False

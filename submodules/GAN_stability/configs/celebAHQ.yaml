@@ -1,0 +1,30 @@
+data:
+  type: npy
+  train_dir: data/celebA-HQ
+  test_dir: data/celebA-HQ
+  img_size: 1024
+generator:
+  name: resnet
+  kwargs:
+    nfilter: 16
+    nfilter_max: 512
+    embed_size: 1
+discriminator:
+  name: resnet
+  kwargs:
+    nfilter: 16
+    nfilter_max: 512
+    embed_size: 1
+z_dist:
+  type: gauss
+  dim: 256
+training:
+  out_dir: output/celebAHQ
+  batch_size: 24
+test:
+  batch_size: 4
+  sample_size: 6
+  sample_nrow: 3
+interpolations:
+  nzs: 10
+  nsubsteps: 75

@@ -1,0 +1,15 @@
+expname: cats_64
+data:
+  datadir: data/cats
+  type: cats
+  imsize: 64
+  white_bkgd: False
+  radius: 10
+  near: 7.5
+  far: 12.5
+  fov: 10
+  umin: 0
+  umax: 0.19444444444444445   #70 deg
+  vmin: 0.32898992833716556 # 70 deg
+  vmax: 0.45642212862617093   # 85 deg
+

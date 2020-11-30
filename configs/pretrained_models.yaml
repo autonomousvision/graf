@@ -1,0 +1,15 @@
+carla:
+  64: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/carla/carla_64.pt
+  128: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/carla/carla_128.pt
+  256: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/carla/carla_256.pt
+  512: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/carla/carla_512.pt
+celebA:
+  64: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/faces/celebA_64.pt
+  128: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/faces/celebA_128.pt
+celebA_hq:
+  256: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/faces/celebA_hq_256.pt
+  512: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/faces/celebA_hq_512.pt
+cats:
+  64: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/cats/cats_64.pt
+cub:
+  64: https://s3.eu-central-1.amazonaws.com/avg-projects/graf/models/birds/cub_64.pt

@@ -1,0 +1,19 @@
+expname: celebAHQ_256
+data:
+  datadir: /PATH/TO/CELEBA_HQ
+  type: celebA_hq
+  imsize: 256
+  white_bkgd: False
+  radius: 9.5,10.5
+  near: 7.5
+  far: 12.5
+  fov: 10
+  umin: 0
+  umax: 0.25
+  vmin: 0.32898992833716556 # 70 deg
+  vmax: 0.45642212862617093   # 85 deg
+ray_sampler:
+  min_scale: 0.125
+  scale_anneal: 0.0019
+training:
+  fid_every: 10000

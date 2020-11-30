@@ -1,0 +1,13 @@
+expname: debug
+data:
+  imsize: 64
+  datadir: data/cub
+  type: cub
+  radius: 10.
+  near: 7.5
+  far: 12.5
+  fov: 30.0
+training:
+  batch_size: 2
+  nworkers: 0
+  fid_every: -1

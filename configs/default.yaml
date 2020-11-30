@@ -1,0 +1,70 @@
+expname: default
+data:
+  datadir: data/carla
+  type: carla
+  imsize: 64
+  white_bkgd: True
+  near: 1.
+  far: 6.
+  radius: 3.4                 # set according to near and far plane
+  fov: 90.
+  orthographic: False
+  umin: 0.                    # 0 deg, convert to degree via 360. * u
+  umax: 1.                    # 360 deg, convert to degree via 360. * u
+  vmin: 0.                    # 0 deg, convert to degrees via arccos(1 - 2 * v) * 180. / pi
+  vmax: 0.45642212862617093   # 85 deg, convert to degrees via arccos(1 - 2 * v) * 180. / pi
+nerf:
+  i_embed: 0
+  use_viewdirs: True
+  multires: 10
+  multires_views: 4
+  N_samples: 64
+  N_importance: 0
+  netdepth: 8
+  netwidth: 256
+  netdepth_fine: 8
+  netwidth_fine: 256
+  perturb: 1.
+  raw_noise_std: 1.
+  decrease_noise: True
+z_dist:
+  type: gauss
+  dim: 256
+  dim_appearance: 128         # This dimension is subtracted from "dim"
+ray_sampler:
+  min_scale: 0.25
+  max_scale: 1.
+  scale_anneal: 0.0025        # no effect if scale_anneal<0, else the minimum scale decreases exponentially until converge to min_scale
+  N_samples: 1024             # 32*32, patchsize
+discriminator:
+  ndf: 64
+  hflip: False                # Randomly flip discriminator input horizontally
+training:
+  outdir: ./results
+  model_file: model.pt
+  monitoring: tensorboard
+  nworkers: 6
+  batch_size: 8
+  chunk: 32768                # 1024*32
+  netchunk: 65536             # 1024*64
+  lr_g: 0.0005
+  lr_d: 0.0001
+  lr_anneal: 0.5
+  lr_anneal_every: 50000,100000,200000
+  equalize_lr: False
+  gan_type: standard
+  reg_type: real
+  reg_param: 10.
+  optimizer: rmsprop
+  n_test_samples_with_same_shape_code: 4
+  take_model_average: true
+  model_average_beta: 0.999
+  model_average_reinit: false
+  restart_every: -1
+  save_best: fid
+  fid_every: 5000             # Valid for FID and KID
+  print_every: 10
+  sample_every: 500
+  save_every: 900
+  backup_every: 50000
+  video_every: 10000
