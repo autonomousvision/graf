@@ -145,7 +145,7 @@ python eval.py CONFIG.yaml --fid_kid --rotation_elevation --shape_appearance
 ```
 where you replace `CONFIG.yaml` with your config file.
 
-## Multi-View Consistenty Check
+## Multi-View Consistency Check
 
 You can evaluate the multi-view consistency of the generated images by running a Multi-View-Stereo (MVS) algorithm on the generated images. This evaluation uses [COLMAP](https://colmap.github.io/) and make sure that you have COLMAP installed to run
 ```
