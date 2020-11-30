@@ -25,7 +25,7 @@ The simplest way to do so, is to use [anaconda](https://www.anaconda.com/).
 
 You can create an anaconda environment called `graf` using
 ```
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate graf
 ```
 
