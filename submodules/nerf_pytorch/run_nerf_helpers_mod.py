@@ -3,6 +3,7 @@ torch.autograd.set_detect_anomaly(True)
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+from functools import partial
 
 # TODO: remove this dependency
 from torchsearchsorted import searchsorted
@@ -12,6 +13,7 @@ from torchsearchsorted import searchsorted
 img2mse = lambda x, y : torch.mean((x - y) ** 2)
 mse2psnr = lambda x : -10. * torch.log(x) / torch.log(torch.Tensor([10.]))
 to8b = lambda x : (255*np.clip(x,0,1)).astype(np.uint8)
+relu = partial(F.relu, inplace=True)            # saves a lot of memory
 
 
 # Positional encoding (section 5.1)
@@ -101,7 +103,7 @@ class NeRF(nn.Module):
         h = input_pts
         for i, l in enumerate(self.pts_linears):
             h = self.pts_linears[i](h)
-            h = F.relu(h)
+            h = relu(h)
             if i in self.skips:
                 h = torch.cat([input_pts, h], -1)
 
@@ -112,7 +114,7 @@ class NeRF(nn.Module):
         
             for i, l in enumerate(self.views_linears):
                 h = self.views_linears[i](h)
-                h = F.relu(h)
+                h = relu(h)
 
             rgb = self.rgb_linear(h)
             outputs = torch.cat([rgb, alpha], -1)

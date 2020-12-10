@@ -120,7 +120,7 @@ def build_models(config, disc=True):
 
     config_nerf = Namespace(**config['nerf'])
     # Update config for NERF
-    config_nerf.chunk = config['training']['chunk']
+    config_nerf.chunk = min(config['training']['chunk'], 1024*config['training']['batch_size'])     # let batch size for training with patches limit the maximal memory
     config_nerf.netchunk = config['training']['netchunk']
     config_nerf.white_bkgd = config['data']['white_bkgd']
     config_nerf.feat_dim = config['z_dist']['dim']
@@ -143,7 +143,7 @@ def build_models(config, disc=True):
                           ray_sampler=ray_sampler,
                           render_kwargs_train=render_kwargs_train, render_kwargs_test=render_kwargs_test,
                           parameters=params, named_parameters=named_parameters,
-                          chunk=config['training']['chunk'],
+                          chunk=config_nerf.chunk,
                           range_u=(float(config['data']['umin']), float(config['data']['umax'])),
                           range_v=(float(config['data']['vmin']), float(config['data']['vmax'])),
                           orthographic=config['data']['orthographic'],
