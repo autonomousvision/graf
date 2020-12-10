@@ -43,6 +43,7 @@ training:
   outdir: ./results
   model_file: model.pt
   monitoring: tensorboard
+  use_amp: False               # Use automated mixed precision
   nworkers: 6
   batch_size: 8
   chunk: 32768                # 1024*32
