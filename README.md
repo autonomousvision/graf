@@ -60,8 +60,14 @@ cd data
 ./download_carla.sh
 cd ..
 ```
-This creates a folder `data/carla/` and downloads the images as a zip file. 
-Next extract the images to `data/carla/`.
+This creates a folder `data/carla/` downloads the images as a zip file and extracts them to `data/carla/`. 
+While we do <em>not</em> use camera poses in this project we provide them for completeness. Your can download them by running
+```
+cd data
+./download_carla_poses.sh
+cd ..
+```
+This downloads the camera intrinsics (single file, equal for all images) and extrinsics corresponding to each image.  
 
 ### Faces
 
