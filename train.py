@@ -13,13 +13,12 @@ matplotlib.use('Agg')
 import sys
 sys.path.append('submodules')        # needed to make imports work in GAN_stability
 
-from graf.gan_training import Evaluator as Evaluator
+from graf.gan_training import Trainer, Evaluator
 from graf.config import get_data, build_models, save_config, update_config, build_lr_scheduler
 from graf.utils import count_trainable_parameters, get_nsamples
 from graf.transforms import ImgToPatch
 
 from GAN_stability.gan_training import utils
-from GAN_stability.gan_training.train import Trainer
 from GAN_stability.gan_training.train import update_average
 from GAN_stability.gan_training.logger import Logger
 from GAN_stability.gan_training.checkpoints import CheckpointIO
@@ -208,6 +207,7 @@ if __name__ == '__main__':
     # Trainer
     trainer = Trainer(
         generator, discriminator, g_optimizer, d_optimizer,
+        use_amp=config['training']['use_amp'],
         gan_type=config['training']['gan_type'],
         reg_type=config['training']['reg_type'],
         reg_param=config['training']['reg_param']

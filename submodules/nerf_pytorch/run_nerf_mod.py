@@ -9,6 +9,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 # from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
+from functools import partial
 
 import matplotlib.pyplot as plt
 
@@ -17,6 +18,8 @@ from .run_nerf_helpers_mod import *
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 np.random.seed(0)
 DEBUG = False
+
+relu = partial(F.relu, inplace=True)            # saves a lot of memory
 
 
 def batchify(fn, chunk):
@@ -232,7 +235,7 @@ def create_nerf(args):
 def raw2outputs(raw, z_vals, rays_d, raw_noise_std=0, white_bkgd=False, pytest=False):
     """ A helper function for `render_rays`.
     """
-    raw2alpha = lambda raw, dists, act_fn=F.relu: 1.-torch.exp(-act_fn(raw)*dists)
+    raw2alpha = lambda raw, dists, act_fn=relu: 1.-torch.exp(-act_fn(raw)*dists)
 
     dists = z_vals[...,1:] - z_vals[...,:-1]
     dists = torch.cat([dists, torch.Tensor([1e10]).expand(dists[...,:1].shape)], -1)  # [N_rays, N_samples]
