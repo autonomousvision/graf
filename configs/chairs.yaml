@@ -1,0 +1,11 @@
+expname: carla_128
+data:
+  imsize: 600
+  datadir: data/carla
+  type: carla
+  radius: 9.6
+  near: 9
+  far: 10
+  fov: 30.0
+  vmin: 0.1 # 50 deg - todo: need to do proper calculation from deg to number here.
+  vmax: 0.32898992833716556 # 70 deg
